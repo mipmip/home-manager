@@ -37,7 +37,9 @@ in {
         options = {
           root = mkOptionRoot ''
             Root path in filesystem of the smug project. This is where tmux
-            changes its directory to. Defaults to $HOME.
+            changes its directory to. 
+            
+            Application defaults to `$HOME`.
           '';
 
           windows = lib.mkOption {
