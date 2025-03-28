@@ -112,10 +112,12 @@ in {
             default = null;
             description = "Environment Variables to set in session.";
           };
+          
           beforeStart = mkOptionCommands
             "Commands to execute before the tmux-session starts.";
+            
           stop = mkOptionCommands
-            " Commands to execute after the tmux-session is destroyed.";
+            "Commands to execute after the tmux-session is destroyed.";
 
         };
       }
