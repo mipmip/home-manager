@@ -25,12 +25,7 @@ in {
 
     enable = lib.mkEnableOption "Smug session manager";
 
-    package = lib.mkOption {
-      type = lib.types.package;
-      default = pkgs.smug;
-      defaultText = lib.literalExpression "pkgs.smug";
-      description = "Package providing {command}`smug`.";
-    };
+    package = lib.mkPackageOption pkgs "smug" { nullable = true; };
 
     projects = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule [{
@@ -118,10 +113,8 @@ in {
             
           stop = mkOptionCommands
             "Commands to execute after the tmux-session is destroyed.";
-
         };
       }
-
         ]);
       default = { };
       description = "List of project configurations.";
@@ -147,7 +140,7 @@ in {
     });
 
   in lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-    home.file = { } // (mkProjects cleanedProjects);
+    home.packages = lib.mkIf (cfg.package != null) [ cfg.package ];
+    home.file = mkProjects cleanedProjects;
   };
 }
