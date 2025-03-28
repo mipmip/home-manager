@@ -117,7 +117,7 @@ in {
       }
         ]);
       default = { };
-      description = "List of project configurations.";
+      description = "Attribute set with project configurations.";
     };
   };
 
