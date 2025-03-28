@@ -32,8 +32,8 @@ in {
         options = {
           root = mkOptionRoot ''
             Root path in filesystem of the smug project. This is where tmux
-            changes its directory to. 
-            
+            changes its directory to.
+
             Application defaults to `$HOME`.
           '';
 
@@ -107,15 +107,14 @@ in {
             default = null;
             description = "Environment Variables to set in session.";
           };
-          
+
           beforeStart = mkOptionCommands
             "Commands to execute before the tmux-session starts.";
-            
+
           stop = mkOptionCommands
             "Commands to execute after the tmux-session is destroyed.";
         };
-      }
-        ]);
+      }]);
       default = { };
       description = "Attribute set with project configurations.";
     };
